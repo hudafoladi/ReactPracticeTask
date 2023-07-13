@@ -1,0 +1,84 @@
+#userlist {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
+}
+
+#userlist td,
+#userlist th {
+  padding: 12px 15px;
+}
+
+#userlist tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+#userlist tbody tr:last-of-type {
+  border-bottom: 2px solid #003098;
+}
+
+#userlist tbody tr:hover {
+  background-color: #ddd;
+}
+
+#userlist thead tr {
+  background-color: #1c89ff;
+  color: #ffffff;
+  text-align: left;
+}
+#userlist tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+#userlist tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+.delete-edit{
+  display: flex;
+  flex-direction: row;
+}
+.delete__button {
+  flex:1;
+  border-radius: 6px;
+  color: #fff;
+  font-size: medium;
+  cursor: pointer;
+  border-width: thick;
+  border: rgb(255, 0, 0);
+  justify-content: center;
+  position: relative;
+  display: block;
+  width: 55px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 300;
+  background: rgb(255, 0, 0);
+
+  &:hover {
+      background-color: rgb(180, 63, 55);
+  }
+}
+.edit__button {
+  flex:1;
+  color: #fff;
+  border-radius: 6px;
+  font-size: medium;
+  cursor: pointer;
+  border-width: thick;
+  border: rgb(0, 255, 13);
+  justify-content: center;
+  position: relative;
+  display: block;
+  width: 55px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 300;
+  background: rgb(43, 234, 81);
+
+  &:hover {
+      background-color: rgb(55, 180, 74);
+  }
+}

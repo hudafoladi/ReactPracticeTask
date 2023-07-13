@@ -1,0 +1,92 @@
+.form {
+    max-width: 360px;
+    background: #f1f1f1;
+    border-radius: 5px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.header {
+    font-weight: bolder;
+    font-size: 29px;
+
+}
+
+.form-body {
+    text-align: left;
+    padding: 20px 10px;
+}
+
+.form-body>* {
+    padding: 5px;
+}
+
+.form__label {
+    width: 40%;
+}
+
+.header {
+    text-align: center;
+}
+
+.form__fieldHolder {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px
+}
+
+.form__label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.pass-icon-wrap {
+    display: flex;
+    flex-direction: row;
+}
+
+.pass__icon {
+    flex: 1;
+}
+
+.pass__inputwithicon {
+    flex: 1;
+}
+
+
+.form__input {
+    padding: 6px;
+    border-radius: 5ch;
+    border: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.form__button {
+    color: #fff;
+    border-radius: 6px;
+    font-size: medium;
+    cursor: pointer;
+    border-width: thick;
+    border: deepskyblue;
+    justify-content: center;
+    position: relative;
+    display: block;
+    width: 100px;
+    height: 36px;
+    font-size: 17px;
+    font-weight: 300;
+    background: #1c89ff;
+
+    &:hover {
+        background-color: deepskyblue;
+    }
+}
+
+/* .form__button span.submit {
+    background: #1c89ff;
+    &:hover {
+        background-color: deepskyblue;
+    }
+} */

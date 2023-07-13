@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -10,8 +10,8 @@ root.render(
     <App />
   </React.StrictMode>
 );
+// This is a form where you can take input and store the data in the local component state.
+// Render the list on the right hand side section using the same saved data.
+// User can also edit the list (on clicking the edit button data will be populated in the form again and user can update the data). / list will also be updated.
+// Deleting the data will delete the record from the list.
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
