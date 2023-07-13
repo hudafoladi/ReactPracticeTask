@@ -1,0 +1,24 @@
+[{ 
+    "id": "1",
+    "firstName": "huda",
+    "lastName": "ali",
+    "email": "huda@gmail.com",
+    "password": "1234K%hu",
+    "confirmPassword": "1234K%hu"
+},
+{ 
+    "id": "2",
+    "firstName": "rida",
+    "lastName": "asim",
+    "email": "rida@gmail.com",
+    "password": "5678O#Ka",
+    "confirmPassword": "5678O#Ka"
+},
+{ 
+    "id": "3",
+    "firstName": "nida",
+    "lastName": "asim",
+    "email": "nida@gmail.com",
+    "password": "9012sS&o",
+    "confirmPassword": "9012sS&o"
+}]
