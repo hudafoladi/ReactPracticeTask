@@ -1,12 +1,14 @@
 .form {
     max-width: 360px;
     background: #f1f1f1;
-    border-radius: 5px;
+    border-radius: 20px;
     margin: 20px auto;
     padding: 20px;
+    box-shadow: 0 0 6px #1c89ff;
 }
 
 .header {
+    color: #1c89ff;
     font-weight: bolder;
     font-size: 29px;
 
@@ -21,43 +23,47 @@
     padding: 5px;
 }
 
-.form__label {
-    width: 40%;
-}
-
 .header {
     text-align: center;
+}
+
+.show-hide-pass {
+    display: flex;
+    flex-direction: row;
+}
+
+.show-hide-pass .text {
+    flex: 1;
+    margin-left: 30px;
+    margin-right: 145px;
+    font-size: 14px;
+    font-weight: 400;
+    color: deepskyblue;
+}
+
+.show-hide-pass .icon {
+    flex: 1;
 }
 
 .form__fieldHolder {
     display: flex;
     flex-direction: column;
-    max-width: 250px
+    max-width: 250px;
+    margin: 0 auto;
+
 }
 
 .form__label {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 4px;
+    width: 100%;
 }
-
-.pass-icon-wrap {
-    display: flex;
-    flex-direction: row;
-}
-
-.pass__icon {
-    flex: 1;
-}
-
-.pass__inputwithicon {
-    flex: 1;
-}
-
 
 .form__input {
-    padding: 6px;
-    border-radius: 5ch;
+    padding: 7px;
+    font-size: 14px;
+    border-radius: 100ch;
     border: 0;
     width: 100%;
     text-align: center;
@@ -65,12 +71,13 @@
 
 .form__button {
     color: #fff;
-    border-radius: 6px;
+    text-align: center;
+    align-self: center;
+    border-radius: 20px;
     font-size: medium;
     cursor: pointer;
     border-width: thick;
-    border: deepskyblue;
-    justify-content: center;
+    border-color: rgb(156, 212, 242);
     position: relative;
     display: block;
     width: 100px;
@@ -78,15 +85,9 @@
     font-size: 17px;
     font-weight: 300;
     background: #1c89ff;
+    margin: 0 auto;
 
     &:hover {
         background-color: deepskyblue;
     }
 }
-
-/* .form__button span.submit {
-    background: #1c89ff;
-    &:hover {
-        background-color: deepskyblue;
-    }
-} */

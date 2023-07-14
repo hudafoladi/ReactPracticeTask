@@ -3,10 +3,8 @@ import './registerformstyle.css';
 import InputField from '../InputField/InputField';
 import { TbEyeOff, TbEyeFilled } from 'react-icons/tb';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdit, setToEdit }) => {
   console.log("edit row ", toEdit);
-
   //show or hide the register form
   // let [toggleForm, setToggle] = useState(false)
   //==============================================
@@ -36,14 +34,14 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
   });
   function formDataOutput() {
     console.log(formData.firstName, formData.lastName, formData.email, formData.password, formData.confirmPassword);
-  
+
     // Checking if any is empty
     if (formData.firstName.length === 0 || formData.lastName.length === 0 || formData.email.length === 0 || formData.password.length === 0 || formData.confirmPassword.length === 0) {
-      alert('Invalid Form! A field is empty.')
+      alert('Invalid Form! Field is empty.')
       return
     }
     //==============================================
-    //Validating email
+    //Validating email using regex
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (!formData.email || regex.test(formData.email) === false) {
       alert('Invalid email format!')
@@ -64,59 +62,55 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
       return
     }
     //Checking characters in password
-    let countUpperCase = 0
-    let countLowerCase = 0
-    let countDigit = 0
-    let countSpecialCharacters = 0
+    let totalUpperCases = 0
+    let totalLowerCases = 0
+    let digitCount = 0
+    let totalSpecialCharacters = 0
     for (let i = 0; i < formData.password.length; i++) {
       const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-', '+', '=', '[', '{', ']', '}', ':', ';', '<', '>']
       if (specialChars.includes(formData.password[i])) {
-        // if the character is special increment countSpecialCharacters
-        countSpecialCharacters++
+        totalSpecialCharacters++
       } else if (!isNaN(formData.password[i] * 1)) {
-        // if the character is a digit increment countDigit
-        countDigit++
+        // isNaN -> is Not a Number
+        digitCount++
       } else {
         if (formData.password[i] === formData.password[i].toUpperCase()) {
-          // if the character is upper case increment countUpperCase
-          countUpperCase++
+          totalUpperCases++
         }
         if (formData.password[i] === formData.password[i].toLowerCase()) {
-          // if the character is lowercase increment countUpperCase
-          countLowerCase++
+          totalLowerCases++
         }
       }
     }
-    if (countLowerCase === 0) {
+    if (totalLowerCases === 0) {
       alert('Invalid Form! Password must include a lower case character.')
       return
     }
-    if (countUpperCase === 0) {
+    if (totalUpperCases === 0) {
       alert('Invalid Form! Password must include a upper case character.')
       return
     }
-    if (countDigit === 0) {
+    if (digitCount === 0) {
       alert('Invalid Form! Password must include a digit.')
       return
     }
-    if (countSpecialCharacters === 0) {
+    if (totalSpecialCharacters === 0) {
       alert('Invalid Form! Password must include a special character.')
       return
     }
     //==============================================
-    
     const userInfo = {
-      id: (toEdit===false)? lastId + 1 : editRow.id,
+      id: (toEdit === false) ? lastId + 1 : editRow.id,
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
       password: formData.password,
       confirmPassword: formData.confirmPassword
     }
-    if(toEdit === true){
+    if (toEdit === true) {
       console.log("ID of row being replaced: ", editRow.id)
-      userList.splice(editRow.id -1, 1, userInfo)
-    }else{
+      userList.splice(editRow.id - 1, 1, userInfo)
+    } else {
       onSendUser(userInfo);
     }
     setFormData(clearData);
@@ -133,7 +127,6 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
     // else  a new bool local state = true (by default false)
     //send as prop to iserror of confirmpass
   }
-
   const handleUserUpdate = useCallback(() => {
     if (toEdit === true) {
       setFormData(
@@ -174,7 +167,6 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
               type="text"
               name="lastName"
               value={formData.lastName}
-              //{(toEdit===false) ? formData.lastName : editRow.lastName}
               placeholder="Last Name"
               handleChange={handleFormField} />
           </div>
@@ -185,29 +177,29 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
               type="text"
               name="email"
               value={formData.email}
-              //{(toEdit===false) ? formData.email : editRow.email}
               placeholder="Email"
               handleChange={handleFormField}
             />
           </div>
           <div className="password">
-            <div className="pass-icon-wrap">
-              <InputField
-                className="pass__inputwithicon"
-                id="password"
-                labelText="Password"
-                type={(showPassword === false) ? "password" : "text"}
-                name="password"
-                value={formData.password}
-                //{(toEdit === false) ? formData.password : editRow.password}
-                placeholder="Password"
-                handleChange={handleFormField} />
-              <div className="pass__icon">
+            <InputField
+              id="password"
+              labelText="Password"
+              type={(showPassword === false) ? "password" : "text"}
+              name="password"
+              value={formData.password}
+              placeholder="Password"
+              handleChange={handleFormField} />
+            <div className='show-hide-pass'>
+              <section className='text'>
+                Show/Hide
+              </section>
+              <section className='icon'>
                 {
                   (showPassword === false) ?
                     <TbEyeFilled onClick={handleShowPassClick} /> : <TbEyeOff onClick={handleShowPassClick} />
                 }
-              </div>
+              </section>
             </div>
           </div>
           <div className="confirm-password">
@@ -217,16 +209,21 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
               type={(showConfirmPassword === false) ? "password" : "text"}
               name="confirmPassword"
               value={formData.confirmPassword}
-              //{(toEdit===false) ? formData.confirmPassword : editRow.password}
               placeholder="Confirm Password"
               handleChange={handleFormField}
             />
-          </div>
-          <div>
-            {
-              (showConfirmPassword === false) ?
-                <TbEyeFilled onClick={handleShowConfirmPassClick} /> : <TbEyeOff onClick={handleShowConfirmPassClick} />
-            }
+            <div className='show-hide-pass'>
+              <section className='text'>
+                Show/Hide
+              </section>
+              <section className='icon'>
+                {
+                  (showConfirmPassword === false) ?
+                    <TbEyeFilled onClick={handleShowConfirmPassClick} /> : <TbEyeOff onClick={handleShowConfirmPassClick} />
+                }
+              </section>
+            </div>
+
           </div>
         </div>
         <div className="footer">

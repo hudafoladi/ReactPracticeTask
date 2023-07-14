@@ -1,7 +1,10 @@
 import "./userliststyle.css";
 const UserInfo = ({ userList, setUserList, setEditRow, setToEdit }) => (
     <> {console.log(userList)}
+        
         <table id="userlist">
+        <caption>Registered Users</caption>
+
             <thead>
                 <tr>
                     <th>ID</th>
@@ -9,7 +12,7 @@ const UserInfo = ({ userList, setUserList, setEditRow, setToEdit }) => (
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Password</th>
-                    <th>Delete/Edit</th>
+                    <th>Delete / Edit</th>
                 </tr>
             </thead>
             <tbody>

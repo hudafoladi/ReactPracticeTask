@@ -6,14 +6,9 @@
   .main-container .form-section {
     flex: 1;
   }
-  
+
   .main-container .list-section {
     flex: 1;
   }
-  .main-container .field-value {
-    flex: 1;
-  }
-  .main-container .field-icon {
-    flex: 1;
-  }
+ 
   
