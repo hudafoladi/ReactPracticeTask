@@ -100,7 +100,7 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
     }
     //==============================================
     const userInfo = {
-      id: (toEdit === false) ? lastId + 1 : editRow.id,
+      _id: (toEdit === false) ? lastId + 1 : editRow._id,
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
@@ -108,15 +108,21 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
       confirmPassword: formData.confirmPassword
     }
     if (toEdit === true) {
-      console.log("ID of row being replaced: ", editRow.id)
-      userList.splice(editRow.id - 1, 1, userInfo)
+      console.log("ID of row being replaced: ", editRow._id)
+      userList.splice(editRow._id - 1, 1, userInfo)
     } else {
       onSendUser(userInfo);
     }
+
+    //console.log(fetch("./api/register", { method: "POST", body: userInfo }))
+
+
+
     setFormData(clearData);
     setToEdit(false);
     setEditRow(clearData);
     // setToggle(!toggleForm);
+
   }
   const handleFormField = (event) => {
     const { name, value } = event
@@ -151,7 +157,7 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
         <div className="form-body">
           <div className="username">
             <InputField
-              id="firstName"
+              _id="firstName"
               labelText="First Name"
               type="text"
               name="firstName"
@@ -162,7 +168,7 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
           </div>
           <div className="lastname">
             <InputField
-              id="lastName"
+              _id="lastName"
               labelText="Last Name"
               type="text"
               name="lastName"
@@ -172,7 +178,7 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
           </div>
           <div className="email">
             <InputField
-              id="email"
+              _id="email"
               labelText="Email"
               type="text"
               name="email"
@@ -183,7 +189,7 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
           </div>
           <div className="password">
             <InputField
-              id="password"
+              _id="password"
               labelText="Password"
               type={(showPassword === false) ? "password" : "text"}
               name="password"
@@ -204,7 +210,7 @@ const RegisterUser = ({ onSendUser, lastId, userList, editRow, setEditRow, toEdi
           </div>
           <div className="confirm-password">
             <InputField
-              id="confirmPassword"
+              _id="confirmPassword"
               labelText="Confirm Password"
               type={(showConfirmPassword === false) ? "password" : "text"}
               name="confirmPassword"
